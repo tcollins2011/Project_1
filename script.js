@@ -33,25 +33,21 @@ var questionnaire = {
 
 }
 
-            var currentQuestion = 0
-            var score = 0       
+ var currentQuestion = 0
+  var score = 0       
 
 
-      $("#startbtn").on('click', function(){
-            $(".content").empty()
-            
-           
-           startQuiz()
+$("#startbtn").on('click', function(){
+  $(".content").empty()
+
+  startQuiz()
       })
 
 
 
-      function startQuiz(){
+function startQuiz(){
             
-           
-           firstQuestion();
-
-           
+firstQuestion();       
       }
             
       function firstQuestion() {
@@ -100,8 +96,6 @@ var questionnaire = {
                   $(".content").empty()
                   thirdQuestion()
 
-                  
-                  
             })
            
       }
