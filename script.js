@@ -1,21 +1,21 @@
 
-   
-// var question1content = "Which SuperHero do you most identify with?"
-// var question1response1 = "Batman"
-// var question1response2 = "Superman"
-
-// var question2content = "Which do you prefer as a pet?"
-// var question2response1 = "Dog"
-// var question2response2 = "Cat"
-
-// var question3content = "Mashed Potatoes or Baked Potato?"
-// var question3response1 = "Mashed"
-// var question3response2 = "Baked"
-
-// var question4content = "Game of Thrones or Harry Potter"
-// var question4response1 = "Game of Thrones"
-// var question4response2 = "Harry Potter"
-
+// Global Variables that we need
+var planetName 
+var answerArray = []
+ 
+// Global Objects that we are using
+var clickBaitDescription = {
+      'mercury': "something something",
+      'venus': " Something witty and funny that will be written later",
+      'earth': "",
+      'mars': "",
+      'jupiter': "",
+      'saturn': "something witty",
+      'uranus': "",
+      'neptune':"",
+      'pluto': "",
+    
+    }
 var questionnaire = {
     
       questions: {
@@ -33,28 +33,14 @@ var questionnaire = {
 
 }
 
-            var currentQuestion = 0
-            var score = 0       
-
-
-      $("#startbtn").on('click', function(){
+// Function that starts the questions when the star button is clicked
+$("#startbtn").on('click', function(){
             $(".content").empty()
-            
-           
-           startQuiz()
-      })
-
-
-
-      function startQuiz(){
-            
-           
-           firstQuestion();
-
-           
-      }
-            
-      function firstQuestion() {
+           firstQuestion()
+})
+    
+// Renders the first question
+ function firstQuestion() {
             
             var divQuestion = $("<div>");
             var divAnswer1 = $("<div>") ;
@@ -78,8 +64,9 @@ var questionnaire = {
                   
             })
            
-      }
-      function secondQuestion() {
+ }
+
+function secondQuestion() {
             var divQuestion = $("<div>");
             var divAnswer1 = $("<div>") ;
             var divAnswer2 = $("<div>") ; 
@@ -104,9 +91,9 @@ var questionnaire = {
                   
             })
            
-      }
+}
 
-      function thirdQuestion() {
+function thirdQuestion() {
             var divQuestion = $("<div>");
             var divAnswer1 = $("<div>") ;
             var divAnswer2 = $("<div>") ; 
@@ -129,8 +116,10 @@ var questionnaire = {
                   
             })
            
-      }
-      function fourthQuestion() {
+}
+
+// Renders the final question and calls the display planet info so that we can get the results
+function fourthQuestion() {
             var divQuestion = $("<div>");
             var divAnswer1 = $("<div>") ;
             var divAnswer2 = $("<div>") ; 
@@ -149,70 +138,25 @@ var questionnaire = {
       
             $(".button").on("click", function() {
                   $(".content").empty()
-
-                  
-                  
+                  planetName = Object.keys(clickBaitDescription)[answerArray.length]
+                  displayPlanetInfo(planetName)     
             })
            
-      }
-                       
-            
-            
-            
-  
-console.log(currentQuestion)
+}
 
-    
-    
-
-      
-// forloop for Q's
-// using displayQuestion, displayOptions, etc
-
-
-
-
-
-
-
-
-
-// TYLERS CODE
-var clickBaitDescription = {
-      'mercury': "",
-      'venus': " Something witty and funny that will be written later",
-      'earth': "",
-      'mars': "",
-      'jupiter': "",
-      'saturn': "something witty",
-      'uranus': "",
-      'neptune':"",
-      'pluto': "",
-    
-    }
-    
-    var planetName = 'saturn'
-
-
-
-
-
-
-function displayPlanetInfo(){
+// Wipes the page clear and call the NASA api to put a planet on the page
+// also references the clickBaitDescription array
+function displayPlanetInfo(planetName){
     // var planetName = 'saturn'
     var queryURL = 'https://images-api.nasa.gov/search?q=' + planetName
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response){
-        console.log(response)
         $('.content').empty()
-        var planetImage = $('<img>')
-        var planetDescription =$('<p>')
-        var funnyDescription = $('<p>')
-        planetImage.attr('src', response.collection.items[0].links[0].href)
-        planetDescription.text(response.collection.items[0].data[0].description)
-        funnyDescription.text(clickBaitDescription[planetName])
+        var planetImage = $('<img>').attr('src', response.collection.items[0].links[0].href).attr('id', 'resultImage')
+        var planetDescription =$('<p>').text(response.collection.items[0].data[0].description).attr('id', 'resultNasaText')
+        var funnyDescription = $('<p>').text(clickBaitDescription[planetName]).attr('id', 'resultClickBaitText')
         $('.content').append(planetImage)
         $('.content').append(planetDescription)
         $('.content').append(funnyDescription)
@@ -220,5 +164,5 @@ function displayPlanetInfo(){
 })
 }
 
-// displayPlanetInfo()
+
 
