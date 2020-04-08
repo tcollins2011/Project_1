@@ -75,16 +75,27 @@ nextQuestion()
 
 
 
+var clickBaitDescription = {
+  mercury: "",
+  venus: " Something witty and funny that will be written later",
+  earth: "",
+  mars: "",
+  jupiter: "",
+  'saturn': "something witty",
+  uranus: "",
+  neptune:"",
+  pluto: "",
+
+}
 
 
 
-
-
+var planetName = 'saturn'
 
 // need to add question variable
 // Need to add more specific picture choices in queryURL
 function displayPlanetInfo(){
-    var planetName = 'saturn'
+    // var planetName = 'saturn'
     var queryURL = 'https://images-api.nasa.gov/search?q=' + planetName
     $.ajax({
         url: queryURL,
@@ -97,23 +108,11 @@ function displayPlanetInfo(){
         var funnyDescription = $('<p>')
         planetImage.attr('src', response.collection.items[0].links[0].href)
         planetDescription.text(response.collection.items[0].data[0].description)
+        funnyDescription.text(clickBaitDescription[planetName])
         $('.content').append(planetImage)
         $('.content').append(planetDescription)
         $('.content').append(funnyDescription)
-   
+    
 })
 }
 displayPlanetInfo()
-
-var clickBaitDescription = {
-  mercury: "",
-  venus: "",
-  earth: "",
-  mars: "",
-  jupiter: "",
-  saturn: "",
-  uranus: "",
-  neptune:"",
-  pluto: "",
-
-}
