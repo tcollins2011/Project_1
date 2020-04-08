@@ -76,19 +76,17 @@ nextQuestion()
 
 
 var clickBaitDescription = {
-  mercury: "",
-  venus: " Something witty and funny that will be written later",
-  earth: "",
-  mars: "",
-  jupiter: "",
+  'mercury': "",
+  'venus': " Something witty and funny that will be written later",
+  'earth': "",
+  'mars': "",
+  'jupiter': "",
   'saturn': "something witty",
-  uranus: "",
-  neptune:"",
-  pluto: "",
+  'uranus': "",
+  'neptune':"",
+  'pluto': "",
 
 }
-
-
 
 var planetName = 'saturn'
 
@@ -115,4 +113,4 @@ function displayPlanetInfo(){
     
 })
 }
-displayPlanetInfo()
+// displayPlanetInfo()
