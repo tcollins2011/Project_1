@@ -108,7 +108,6 @@ var questionnaire = {
 //         planetDescription.text(response.collection.items[0].data[0].description)
 //         $('body').append(planetDescription)
    
-// })
-// }
+
 // displayPlanetInfo()
 
