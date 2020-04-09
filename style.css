@@ -1,7 +1,7 @@
 body {
     min-height: 100%;
     background-size: cover !important;
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, .6) 100%), url(https://news.virginia.edu/sites/default/files/article_image/fornax_dwarf_galaxy_header_5-2.jpg) no-repeat center center;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, .6) 100%), url(background-galaxy.jpg) no-repeat center center;
     
 }
 
@@ -18,6 +18,7 @@ html {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0 !important;
     color:white;
     font-family: 'Do Hyeon', sans-serif;
     
@@ -29,6 +30,10 @@ html {
 /* primary button */
 .button {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    background: url(button-galaxy.jpeg) no-repeat center center !important;
+>>>>>>> master
 =======
     /* background: url(https://lh3.googleusercontent.com/proxy/T245U0HL3167u8h6LHpzNGjeaiSy2Ki2HAgrH_AHx8VlSefkhTgmVsbPYj9RKN_760wGLLuTBukW9dN-VuUrsm84mlFFmiiC0t83wfKTVMy_UaOOkX06lOsOwcDNKBdNKh1XpUhx3AtLrpLp-8UsO80nGZ6vT0jutaDJbd_zdv3YLqCtr2U8IGZSOFD-B0tLfJcWaEblBCR4dwr2sJGjzNfnl_OEHPDOvkkjzaIvVD8On_sCtDwbvk99T867HwWMCc6xiU_BCMYWV2e8bTZX42Wve-EZJeqHe6Q7HyWKDD7qJGcTFchlqp1rXXy-jE1r87l2U0AmVZ-RmbS9097FNoZxsCvG_m0qEpKvW1eH8WBmzrTsLw) no-repeat center center !important; */
 >>>>>>> master
@@ -39,7 +44,6 @@ html {
 }
 /* title of the image */
 #resultNasaText {
-    
     font-size: 32px;
 }
 /* result image */
@@ -52,6 +56,10 @@ html {
     padding-bottom: 20px;
     font-size: 20px;
 }
+
+#planet {
+
+}
 /* to fit on all screens */
 @media only screen and (max-width: 800px) {
     .content {
@@ -62,12 +70,18 @@ html {
 }
 .answerButton1 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
     /* background: url(https://lh3.googleusercontent.com/proxy/T245U0HL3167u8h6LHpzNGjeaiSy2Ki2HAgrH_AHx8VlSefkhTgmVsbPYj9RKN_760wGLLuTBukW9dN-VuUrsm84mlFFmiiC0t83wfKTVMy_UaOOkX06lOsOwcDNKBdNKh1XpUhx3AtLrpLp-8UsO80nGZ6vT0jutaDJbd_zdv3YLqCtr2U8IGZSOFD-B0tLfJcWaEblBCR4dwr2sJGjzNfnl_OEHPDOvkkjzaIvVD8On_sCtDwbvk99T867HwWMCc6xiU_BCMYWV2e8bTZX42Wve-EZJeqHe6Q7HyWKDD7qJGcTFchlqp1rXXy-jE1r87l2U0AmVZ-RmbS9097FNoZxsCvG_m0qEpKvW1eH8WBmzrTsLw) no-repeat center center !important; */
 >>>>>>> master
     color: rgb(2, 204, 255) !important;
     border: 2px solid rgb(3, 184, 255) !important; /* Green */
+=======
+    background: url(button-galaxy.jpeg) no-repeat center center !important;
+    color: rgb(37, 0, 139) !important;
+    border: 2px solid rgb(35, 1, 146) !important; /* Green */
+>>>>>>> master
     font-weight: 400 !important;
     font-size: 24px !important;
     padding: 7px;
@@ -77,10 +91,15 @@ html {
 }
 .answerButton2 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     /* background: url(https://lh3.googleusercontent.com/proxy/T245U0HL3167u8h6LHpzNGjeaiSy2Ki2HAgrH_AHx8VlSefkhTgmVsbPYj9RKN_760wGLLuTBukW9dN-VuUrsm84mlFFmiiC0t83wfKTVMy_UaOOkX06lOsOwcDNKBdNKh1XpUhx3AtLrpLp-8UsO80nGZ6vT0jutaDJbd_zdv3YLqCtr2U8IGZSOFD-B0tLfJcWaEblBCR4dwr2sJGjzNfnl_OEHPDOvkkjzaIvVD8On_sCtDwbvk99T867HwWMCc6xiU_BCMYWV2e8bTZX42Wve-EZJeqHe6Q7HyWKDD7qJGcTFchlqp1rXXy-jE1r87l2U0AmVZ-RmbS9097FNoZxsCvG_m0qEpKvW1eH8WBmzrTsLw) no-repeat center center !important; */
 >>>>>>> master
     color: rgb(255, 4, 4) !important;
+=======
+    background: url(button-galaxy.jpeg) no-repeat center center !important;
+    color: rgb(139, 0, 0) !important;
+>>>>>>> master
     border: 2px solid rgb(255, 8, 0) !important; /* Green */
     font-weight: 400 !important;
     font-size: 24px !important;
