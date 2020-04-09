@@ -67,13 +67,6 @@ function startQuiz(){
             getGiphs(divAnswer1.val(), $('.answerButton1'))
             getGiphs(divAnswer2.val(), $('.answerButton2'))
             
-            
-      
-            $(".button").on("click", function() {
-                  $(".content").empty()
-                  secondQuestion()
-                  
-            })
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
                   answerArray.push(true)
@@ -83,7 +76,7 @@ function startQuiz(){
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                 
+                  answerArray.push(false)
                   secondQuestion()
                  
             })
@@ -107,22 +100,16 @@ function secondQuestion() {
             getGiphs(divAnswer2.val(), $('.answerButton2'))
 
             
-      
-            $(".button").on("click", function() {
-                  $(".content").empty()
-                  thirdQuestion()
-
-            })
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(true, true, true);
+                  answerArray.push(true, true);
                   thirdQuestion()
                   
             })
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(true, false);
+                  answerArray.push(false);
                   thirdQuestion()
                  
             })
@@ -148,23 +135,16 @@ function thirdQuestion() {
             getGiphs(divAnswer2.val(), $('.answerButton2'))
          
 
-            
-      
-            $(".button").on("click", function() {
-                  $(".content").empty()
-                  fourthQuestion()
-                  
-            })
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(true, false);
+                  answerArray.push(true, true, true);
                   fourthQuestion()
                   
             })
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                  answerArray.push();
+                  answerArray.push(false);
                   fourthQuestion()
                  
             })
@@ -191,7 +171,8 @@ function fourthQuestion() {
 
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(true, true,)
+                  answerArray.push(true, true)
+                  answerArray = _.compact(answerArray)
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
                   displayPlanetInfo(planetName)
@@ -200,7 +181,7 @@ function fourthQuestion() {
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(false, false, false);
+                  answerArray.push(false);
                   answerArray = _.compact(answerArray)
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
