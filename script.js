@@ -37,7 +37,7 @@ var questionnaire = {
           },
 
 }
-     
+// Starts the question function 
 $("#startbtn").on('click', function(){
   $(".content").empty()
 
@@ -45,11 +45,12 @@ $("#startbtn").on('click', function(){
       })
 
 
-
+// Starts the first question function and is referenced by the start over button
 function startQuiz(){     
       firstQuestion();}       
        
-// Renders the first question
+// Renders the first question which is identical to the second and third question
+// This wipes the prebuilt html and starts up the question section
  function firstQuestion() {
 
             
@@ -70,7 +71,6 @@ function startQuiz(){
             getGiphs(divAnswer1.val(), $('.answerButton1'))
             getGiphs(divAnswer2.val(), $('.answerButton2'))
             
-                  
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
                   answerArray.push(true)
@@ -78,8 +78,9 @@ function startQuiz(){
             })
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
+                  answerArray.push(false)
+                  secondQuestion()
                  
-                  secondQuestion() 
             })
  }
 
@@ -100,14 +101,15 @@ function secondQuestion() {
             getGiphs(divAnswer1.val(), $('.answerButton1'))
             getGiphs(divAnswer2.val(), $('.answerButton2'))
 
+            
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(true, true, true);
+                  answerArray.push(true, true);
                   thirdQuestion()
             })
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(true, false);
+                  answerArray.push(false);
                   thirdQuestion()
                  
             })
@@ -133,18 +135,16 @@ function thirdQuestion() {
             getGiphs(divAnswer2.val(), $('.answerButton2'))
          
 
-            
-      
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(true, false);
+                  answerArray.push(true, true, true);
                   fourthQuestion()
                   
             })
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                  answerArray.push();
+                  answerArray.push(false);
                   fourthQuestion()
                  
             })
@@ -171,7 +171,8 @@ function fourthQuestion() {
 
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(true, true,)
+                  answerArray.push(true, true)
+                  answerArray = _.compact(answerArray)
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
                   displayPlanetInfo(planetName)
@@ -180,6 +181,7 @@ function fourthQuestion() {
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
+                  answerArray.push(false);
                   answerArray = _.compact(answerArray)
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
@@ -191,7 +193,7 @@ function fourthQuestion() {
 }
 
 // Wipes the page clear and call the NASA api to put a planet on the page
-// also references the clickBaitDescription array
+// also references the clickBaitDescription array and adds a start over button
 function displayPlanetInfo(planetName){
     var queryURL = 'https://images-api.nasa.gov/search?q=' + planetName
     $.ajax({
@@ -220,8 +222,7 @@ function displayPlanetInfo(planetName){
     
 })
 }
-
-
+// This function searches Pixabay and grabs an image and appends it to a question button
 function getGiphs(searchTarget,appendTarget){
       var queryURL =  'https://pixabay.com/api/?key=15969414-03d75fb92524ff4ee014795c8&q=' + searchTarget
       $.ajax({
