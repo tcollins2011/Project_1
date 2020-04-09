@@ -16,7 +16,7 @@ var clickBaitDescription = {
       'Color image of Pluto': "If you feel like society is not for you, welcome to Pluto. Although it used to be considered a planet, in 2006 Pluto was reclassified as a dwarf planet. The size of Pluto is actually smaller than Earth's moon, so social distancing would be difficult.",
     
     }
-    console.log(clickBaitDescription);
+
 var questionnaire = {
     
       questions: {
@@ -63,8 +63,8 @@ function startQuiz(){
             $(".content").append($("<div>").addClass('columns'));
             $(".columns").append(divAnswer1);
             $(".columns").append(divAnswer2);
-            getGiphs(divAnswer1.val(), $('answerButton1'))
-            getGiphs(divAnswer2.val(), $('answerButton2'))
+            getGiphs(divAnswer1.val(), $('.answerButton1'))
+            getGiphs(divAnswer2.val(), $('.answerButton2'))
             
             
       
@@ -102,8 +102,8 @@ function secondQuestion() {
             $(".content").append($("<div>").addClass('columns'));
             $(".columns").append(divAnswer1);
             $(".columns").append(divAnswer2);
-            getGiphs(divAnswer1.val(), $('answerButton1'))
-            getGiphs(divAnswer2.val(), $('answerButton2'))
+            getGiphs(divAnswer1.val(), $('.answerButton1'))
+            getGiphs(divAnswer2.val(), $('.answerButton2'))
 
             
       
@@ -143,8 +143,8 @@ function thirdQuestion() {
             $(".content").append($("<div>").addClass('columns'));
             $(".columns").append(divAnswer1);
             $(".columns").append(divAnswer2);
-            getGiphs(divAnswer1.val(), $('answerButton1'))
-            getGiphs(divAnswer2.val(), $('answerButton2'))
+            getGiphs(divAnswer1.val(), $('.answerButton1'))
+            getGiphs(divAnswer2.val(), $('.answerButton2'))
          
 
             
@@ -184,8 +184,8 @@ function fourthQuestion() {
             $(".content").append($("<div>").addClass('columns'));
             $(".columns").append(divAnswer1);
             $(".columns").append(divAnswer2);
-            getGiphs(divAnswer1.val(), $('answerButton1'))
-            getGiphs(divAnswer2.val(), $('answerButton2'))
+            getGiphs(divAnswer1.val(), $('.answerButton1'))
+            getGiphs(divAnswer2.val(), $('.answerButton2'))
            
 
             $(".answerButton1").on("click", function() {
@@ -219,7 +219,6 @@ function displayPlanetInfo(planetName){
         method: "GET"
     }).then(function(response){
         $('.content').empty()
-        console.log(results)
         var planetImage = $('<img>').attr('src', response.collection.items[0].links[0].href).attr('id', 'resultImage')
         var planetDescription =$('<p>').text(response.collection.items[0].data[0].description).attr('id', 'resultNasaText')
         var funnyDescription = $('<p>').text(clickBaitDescription[planetName]).attr('id', 'resultClickBaitText')
@@ -248,9 +247,7 @@ function getGiphs(searchTarget,appendTarget){
             url: queryURL,
             method: "GET"
       }).then(function(response){
-            console.log(response)
             var questionImage =$('<img>').attr('src',response.hits[0].webformatURL)
-            console.log(questionImage)
             appendTarget.append(questionImage)
       })
 
