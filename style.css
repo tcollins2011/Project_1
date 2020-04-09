@@ -30,10 +30,12 @@ html {
 /* primary button */
 .button {
     background: url(button-galaxy.jpeg) no-repeat center center !important;
-    color: darkmagenta !important;
-    border: 2px solid darkmagenta !important; /* Green */
-    font-weight: 700 !important;
-    font-size: 22px !important;
+
+    color: rgb(8, 0, 6) !important;
+    border: 2px solid rgb(250, 251, 252) !important; /* Green */
+    font-weight: 300 !important;
+    font-size: 26px !important;
+   
 }
 /* title of the image */
 #resultNasaText {
@@ -44,15 +46,13 @@ html {
     padding-bottom: 20px;
 }
 /* click bait text about the planet */
-#resultClickBait{
+#resultClickBaitText {
+    color: crimson;
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 20px;
+    font-size: 30px;
 }
 
-#planet {
-
-}
 /* to fit on all screens */
 @media only screen and (max-width: 800px) {
     .content {
@@ -62,23 +62,36 @@ html {
     }
 }
 .answerButton1 {
-    background: url(button-galaxy.jpeg) no-repeat center center !important;
-    color: rgb(37, 0, 139) !important;
-    border: 2px solid rgb(35, 1, 146) !important; /* Green */
+
+    color: rgb(2, 204, 255) !important;
+    border: 2px solid rgb(3, 184, 255) !important; /* Green */
     font-weight: 400 !important;
-    font-size: 24px !important;
+    font-size: 28px !important;
     padding: 7px;
     margin: 15px;
 
 
 }
 .answerButton2 {
-    background: url(button-galaxy.jpeg) no-repeat center center !important;
-    color: rgb(139, 0, 0) !important;
+
+    color: rgb(255, 4, 4) !important;
     border: 2px solid rgb(255, 8, 0) !important; /* Green */
     font-weight: 400 !important;
-    font-size: 24px !important;
+    font-size: 28px !important;
     padding: 7px;
     margin: 15px;
 
+}
+
+.questionContent {
+    font-size: 42px;
+    font-weight: 250px;
+    padding: 5px;
+    margin: 5px;
+}
+#quizDescription {
+    font-size: 40px;
+    font-weight: 250px;
+    padding: 5px;
+    margin: 5px;
 }
