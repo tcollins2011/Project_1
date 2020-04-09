@@ -49,18 +49,21 @@ function startQuiz(){
 
             
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>").addClass('answerButton1');
-            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q1[0]);
+            var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q1[1]); 
         
 
             divQuestion.text(questionnaire.questions.q1);
             divAnswer1.text(questionnaire.options.q1[0])
             divAnswer2.text(questionnaire.options.q1[1])
 
-            $(".content").append(divQuestion);
-            $(".content").append(divAnswer1);
-            $(".content").append(divAnswer2);
             
+            $(".content").append(divQuestion);
+            $(".content").append($("<div>").addClass('columns'));
+            $(".columns").append(divAnswer1);
+            $(".columns").append(divAnswer2);
+            getGiphs(divAnswer1.val(), $('answerButton1'))
+            getGiphs(divAnswer2.val(), $('answerButton2'))
             
             
       
@@ -86,8 +89,8 @@ function startQuiz(){
 
 function secondQuestion() {
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>").addClass('answerButton1');
-            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q2[0]);
+            var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q2[1]); 
          
 
             divQuestion.text(questionnaire.questions.q2);
@@ -95,9 +98,11 @@ function secondQuestion() {
             divAnswer2.text(questionnaire.options.q2[1])
 
             $(".content").append(divQuestion);
-            $(".content").append(divAnswer1);
-            $(".content").append(divAnswer2);
-           
+            $(".content").append($("<div>").addClass('columns'));
+            $(".columns").append(divAnswer1);
+            $(".columns").append(divAnswer2);
+            getGiphs(divAnswer1.val(), $('answerButton1'))
+            getGiphs(divAnswer2.val(), $('answerButton2'))
 
             
       
@@ -125,8 +130,8 @@ function secondQuestion() {
 
 function thirdQuestion() {
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>").addClass('answerButton1');
-            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q3[0]);
+            var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q3[1]);
             
 
             divQuestion.text(questionnaire.questions.q3);
@@ -134,8 +139,11 @@ function thirdQuestion() {
             divAnswer2.text(questionnaire.options.q3[1])
 
             $(".content").append(divQuestion);
-            $(".content").append(divAnswer1);
-            $(".content").append(divAnswer2);
+            $(".content").append($("<div>").addClass('columns'));
+            $(".columns").append(divAnswer1);
+            $(".columns").append(divAnswer2);
+            getGiphs(divAnswer1.val(), $('answerButton1'))
+            getGiphs(divAnswer2.val(), $('answerButton2'))
          
 
             
@@ -164,17 +172,19 @@ function thirdQuestion() {
 // Renders the final question and calls the display planet info so that we can get the results
 function fourthQuestion() {
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>").addClass('answerButton1');
-            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q4[0]);
+            var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q4[1]);
             
             divQuestion.text(questionnaire.questions.q4);
             divAnswer1.text(questionnaire.options.q4[0])
             divAnswer2.text(questionnaire.options.q4[1])
 
             $(".content").append(divQuestion);
-            $(".content").append(divAnswer1);
-            $(".content").append(divAnswer2);
-         
+            $(".content").append($("<div>").addClass('columns'));
+            $(".columns").append(divAnswer1);
+            $(".columns").append(divAnswer2);
+            getGiphs(divAnswer1.val(), $('answerButton1'))
+            getGiphs(divAnswer2.val(), $('answerButton2'))
            
 
             $(".answerButton1").on("click", function() {
@@ -212,6 +222,7 @@ function displayPlanetInfo(planetName){
         method: "GET"
     }).then(function(response){
         $('.content').empty()
+        console.log(results)
         var planetImage = $('<img>').attr('src', response.collection.items[0].links[0].href).attr('id', 'resultImage')
         var planetDescription =$('<p>').text(response.collection.items[0].data[0].description).attr('id', 'resultNasaText')
         var funnyDescription = $('<p>').text(clickBaitDescription[planetName]).attr('id', 'resultClickBaitText')
@@ -224,15 +235,16 @@ function displayPlanetInfo(planetName){
 }
 
 
-function getGiphs(variable,variable){
-      var queryURL = 'https://gfycat.com/oauth/authorize?client_id=2_SGYJn6&scope=all &state=click_bait&response_type=token &redirect_uri={{redirectUri}}'
+function getGiphs(searchTarget,appendTarget){
+      var queryURL =  'https://pixabay.com/api/?key=15969414-03d75fb92524ff4ee014795c8&q=' + searchTarget
       $.ajax({
             url: queryURL,
             method: "GET"
       }).then(function(response){
             console.log(response)
-            var Image = $('').attr('src,response.')
-      
+            var questionImage =$('<img>').attr('src',response.hits[0].webformatURL)
+            console.log(questionImage)
+            appendTarget.append(questionImage)
       })
 
 }
