@@ -1,7 +1,7 @@
 
 // Global Variables that we need
 var planetName 
-var answerArray = [3,3,0,'']
+var answerArray = []
  
 // Global Objects that we are using
 var clickBaitDescription = {
@@ -32,20 +32,26 @@ var questionnaire = {
           },
 
 }
-
-// Function that starts the questions when the star button is clicked
+     
 $("#startbtn").on('click', function(){
-            $(".content").empty()
-           firstQuestion()
-})
-    
+  $(".content").empty()
+
+  startQuiz()
+      })
+
+
+
+function startQuiz(){     
+      firstQuestion();}       
+       
 // Renders the first question
  function firstQuestion() {
+
             
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>") ;
-            var divAnswer2 = $("<div>") ; 
-            var nextbtn = $("<btn>").text("Next Question").addClass("button");
+            var divAnswer1 = $("<div>").addClass('answerButton1');
+            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+        
 
             divQuestion.text(questionnaire.questions.q1);
             divAnswer1.text(questionnaire.options.q1[0])
@@ -54,7 +60,7 @@ $("#startbtn").on('click', function(){
             $(".content").append(divQuestion);
             $(".content").append(divAnswer1);
             $(".content").append(divAnswer2);
-            $(".content").append(nextbtn);
+            
             
             
       
@@ -63,14 +69,26 @@ $("#startbtn").on('click', function(){
                   secondQuestion()
                   
             })
-           
+            $(".answerButton1").on("click", function() {
+                  $(".content").empty()
+                  answerArray.push(true)
+                  secondQuestion()
+                  
+            })
+
+            $(".answerButton2").on("click", function() {
+                  $(".content").empty()
+                 
+                  secondQuestion()
+                 
+            })
  }
 
 function secondQuestion() {
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>") ;
-            var divAnswer2 = $("<div>") ; 
-            var nextbtn = $("<btn>").text("Next Question").addClass("button");
+            var divAnswer1 = $("<div>").addClass('answerButton1');
+            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+         
 
             divQuestion.text(questionnaire.questions.q2);
             divAnswer1.text(questionnaire.options.q2[0])
@@ -79,7 +97,7 @@ function secondQuestion() {
             $(".content").append(divQuestion);
             $(".content").append(divAnswer1);
             $(".content").append(divAnswer2);
-            $(".content").append(nextbtn);
+           
 
             
       
@@ -87,17 +105,29 @@ function secondQuestion() {
                   $(".content").empty()
                   thirdQuestion()
 
-                  
+            })
+            $(".answerButton1").on("click", function() {
+                  $(".content").empty()
+                  answerArray.push(true, true, true);
+                  thirdQuestion()
                   
             })
+
+            $(".answerButton2").on("click", function() {
+                  $(".content").empty()
+                 
+                  thirdQuestion()
+                 
+            })
+            
            
 }
 
 function thirdQuestion() {
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>") ;
-            var divAnswer2 = $("<div>") ; 
-            var nextbtn = $("<btn>").text("Next Question").addClass("button");
+            var divAnswer1 = $("<div>").addClass('answerButton1');
+            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            
 
             divQuestion.text(questionnaire.questions.q3);
             divAnswer1.text(questionnaire.options.q3[0])
@@ -106,7 +136,7 @@ function thirdQuestion() {
             $(".content").append(divQuestion);
             $(".content").append(divAnswer1);
             $(".content").append(divAnswer2);
-            $(".content").append(nextbtn);
+         
 
             
       
@@ -115,16 +145,28 @@ function thirdQuestion() {
                   fourthQuestion()
                   
             })
+            $(".answerButton1").on("click", function() {
+                  $(".content").empty()
+            
+                  fourthQuestion()
+                  
+            })
+
+            $(".answerButton2").on("click", function() {
+                  $(".content").empty()
+                  answerArray.push(false, false);
+                  fourthQuestion()
+                 
+            })
            
 }
 
 // Renders the final question and calls the display planet info so that we can get the results
 function fourthQuestion() {
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>") ;
-            var divAnswer2 = $("<div>") ; 
-            var nextbtn = $("<btn>").text("Next Question").addClass("button");
-
+            var divAnswer1 = $("<div>").addClass('answerButton1');
+            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            
             divQuestion.text(questionnaire.questions.q4);
             divAnswer1.text(questionnaire.options.q4[0])
             divAnswer2.text(questionnaire.options.q4[1])
@@ -132,15 +174,31 @@ function fourthQuestion() {
             $(".content").append(divQuestion);
             $(".content").append(divAnswer1);
             $(".content").append(divAnswer2);
-            $(".content").append(nextbtn);
+         
+           
 
-            
-      
-            $(".button").on("click", function() {
+            $(".answerButton1").on("click", function() {
                   $(".content").empty()
-                  answerArray = _.compact(answerArray)
+                  answerArray.push(true, true,)
+                  $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
-                  displayPlanetInfo(planetName)     
+                  displayPlanetInfo(planetName)
+                  console.log(answerArray);
+
+                  
+                  
+            })
+
+            $(".answerButton2").on("click", function() {
+                  $(".content").empty()
+                  answerArray.push(false, false, false);
+                  answerArray = _.compact(answerArray)
+                  $(".content").empty()
+                  planetName = Object.keys(clickBaitDescription)[answerArray.length]
+                  displayPlanetInfo(planetName) 
+                  console.log(answerArray); 
+                 
+                 
             })
            
 }
@@ -165,6 +223,7 @@ function displayPlanetInfo(planetName){
 })
 }
 
+
 function getGiphs(variable,variable){
       var queryURL = 'https://gfycat.com/oauth/authorize?client_id=2_SGYJn6&scope=all &state=click_bait&response_type=token &redirect_uri={{redirectUri}}'
       $.ajax({
@@ -177,4 +236,5 @@ function getGiphs(variable,variable){
       })
 
 }
+
 
