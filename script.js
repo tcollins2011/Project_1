@@ -16,6 +16,7 @@ var clickBaitDescription = {
       'Color image of Pluto': "If you feel like society is not for you, welcome to Pluto. Although it used to be considered a planet, in 2006 Pluto was reclassified as a dwarf planet. The size of Pluto is actually smaller than Earth's moon, so social distancing would be difficult.",
     
     }
+
 var questionnaire = {
     
       questions: {
@@ -32,17 +33,7 @@ var questionnaire = {
           },
 
 }
-
-
-
-
-
-
-
- var currentQuestion = 0      
- var score = 0     
-//  
-//      
+     
 $("#startbtn").on('click', function(){
   $(".content").empty()
 
@@ -53,26 +44,27 @@ $("#startbtn").on('click', function(){
 
 function startQuiz(){     
       firstQuestion();}       
-      
-            
-    
+       
 // Renders the first question
  function firstQuestion() {
 
             
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>").addClass('answerButton1');
-            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q1[0]);
+            var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q1[1]); 
         
 
             divQuestion.text(questionnaire.questions.q1);
             divAnswer1.text(questionnaire.options.q1[0])
             divAnswer2.text(questionnaire.options.q1[1])
 
-            $(".content").append(divQuestion);
-            $(".content").append(divAnswer1);
-            $(".content").append(divAnswer2);
             
+            $(".content").append(divQuestion);
+            $(".content").append($("<div>").addClass('columns'));
+            $(".columns").append(divAnswer1);
+            $(".columns").append(divAnswer2);
+            getGiphs(divAnswer1.val(), $('.answerButton1'))
+            getGiphs(divAnswer2.val(), $('.answerButton2'))
             
             
       
@@ -98,8 +90,8 @@ function startQuiz(){
 
 function secondQuestion() {
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>").addClass('answerButton1');
-            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q2[0]);
+            var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q2[1]); 
          
 
             divQuestion.text(questionnaire.questions.q2);
@@ -107,9 +99,11 @@ function secondQuestion() {
             divAnswer2.text(questionnaire.options.q2[1])
 
             $(".content").append(divQuestion);
-            $(".content").append(divAnswer1);
-            $(".content").append(divAnswer2);
-           
+            $(".content").append($("<div>").addClass('columns'));
+            $(".columns").append(divAnswer1);
+            $(".columns").append(divAnswer2);
+            getGiphs(divAnswer1.val(), $('.answerButton1'))
+            getGiphs(divAnswer2.val(), $('.answerButton2'))
 
             
       
@@ -127,7 +121,7 @@ function secondQuestion() {
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                 
+                  answerArray.push(true, false);
                   thirdQuestion()
                  
             })
@@ -137,8 +131,8 @@ function secondQuestion() {
 
 function thirdQuestion() {
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>").addClass('answerButton1');
-            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q3[0]);
+            var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q3[1]);
             
 
             divQuestion.text(questionnaire.questions.q3);
@@ -146,8 +140,11 @@ function thirdQuestion() {
             divAnswer2.text(questionnaire.options.q3[1])
 
             $(".content").append(divQuestion);
-            $(".content").append(divAnswer1);
-            $(".content").append(divAnswer2);
+            $(".content").append($("<div>").addClass('columns'));
+            $(".columns").append(divAnswer1);
+            $(".columns").append(divAnswer2);
+            getGiphs(divAnswer1.val(), $('.answerButton1'))
+            getGiphs(divAnswer2.val(), $('.answerButton2'))
          
 
             
@@ -159,14 +156,14 @@ function thirdQuestion() {
             })
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
-            
+                  answerArray.push(true, false);
                   fourthQuestion()
                   
             })
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(false, false);
+                  answerArray.push();
                   fourthQuestion()
                  
             })
@@ -176,20 +173,19 @@ function thirdQuestion() {
 // Renders the final question and calls the display planet info so that we can get the results
 function fourthQuestion() {
             var divQuestion = $("<div>");
-            var divAnswer1 = $("<div>").addClass('answerButton1');
-            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
+            var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q4[0]);
+            var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q4[1]);
             
-          
-            
-
             divQuestion.text(questionnaire.questions.q4);
             divAnswer1.text(questionnaire.options.q4[0])
             divAnswer2.text(questionnaire.options.q4[1])
 
             $(".content").append(divQuestion);
-            $(".content").append(divAnswer1);
-            $(".content").append(divAnswer2);
-         
+            $(".content").append($("<div>").addClass('columns'));
+            $(".columns").append(divAnswer1);
+            $(".columns").append(divAnswer2);
+            getGiphs(divAnswer1.val(), $('.answerButton1'))
+            getGiphs(divAnswer2.val(), $('.answerButton2'))
            
 
             $(".answerButton1").on("click", function() {
@@ -198,29 +194,25 @@ function fourthQuestion() {
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
                   displayPlanetInfo(planetName)
-                  console.log(answerArray);
-
-                  
-                  
+                   
             })
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
                   answerArray.push(false, false, false);
+                  answerArray = _.compact(answerArray)
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
                   displayPlanetInfo(planetName) 
-                  console.log(answerArray); 
-                 
-                 
+                   
             })
+
            
 }
 
 // Wipes the page clear and call the NASA api to put a planet on the page
 // also references the clickBaitDescription array
 function displayPlanetInfo(planetName){
-    // var planetName = 'saturn'
     var queryURL = 'https://images-api.nasa.gov/search?q=' + planetName
     $.ajax({
         url: queryURL,
@@ -236,8 +228,28 @@ function displayPlanetInfo(planetName){
         $('.content').append(titleImage)
         $('.content').append(planetImage)
         $('.content').append(funnyDescription)
+        $('.content').append(startOverButton)
+
+        $(".button").on("click", function() {
+            location.reload()
+
+
+        })
     
 })
 }
 
-      console.log(answerArray);
+
+function getGiphs(searchTarget,appendTarget){
+      var queryURL =  'https://pixabay.com/api/?key=15969414-03d75fb92524ff4ee014795c8&q=' + searchTarget
+      $.ajax({
+            url: queryURL,
+            method: "GET"
+      }).then(function(response){
+            var questionImage =$('<img>').attr('src',response.hits[0].webformatURL)
+            appendTarget.append(questionImage)
+      })
+
+}
+
+
