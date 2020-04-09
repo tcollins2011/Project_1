@@ -1,14 +1,14 @@
 
 // Global Variables that we need
 var planetName 
-var answerArray = []
+var answerArray = [3,3,3]
  
 // Global Objects that we are using
 var clickBaitDescription = {
       'mercury': "something something",
       'venus': " Something witty and funny that will be written later",
       'earth': "",
-      'mars': "",
+      'mars red': "something",
       'jupiter': "",
       'saturn': "something witty",
       'uranus': "",
