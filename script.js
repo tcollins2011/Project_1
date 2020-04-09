@@ -1,7 +1,7 @@
 
 // Global Variables that we need
 var planetName 
-var answerArray = [3,3,3]
+var answerArray = [3,3,0,'']
  
 // Global Objects that we are using
 var clickBaitDescription = {
@@ -138,6 +138,7 @@ function fourthQuestion() {
       
             $(".button").on("click", function() {
                   $(".content").empty()
+                  answerArray = _.compact(answerArray)
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
                   displayPlanetInfo(planetName)     
             })
@@ -147,7 +148,6 @@ function fourthQuestion() {
 // Wipes the page clear and call the NASA api to put a planet on the page
 // also references the clickBaitDescription array
 function displayPlanetInfo(planetName){
-    // var planetName = 'saturn'
     var queryURL = 'https://images-api.nasa.gov/search?q=' + planetName
     $.ajax({
         url: queryURL,
@@ -165,5 +165,16 @@ function displayPlanetInfo(planetName){
 })
 }
 
+function getGiphs(variable,variable){
+      var queryURL = 'https://gfycat.com/oauth/authorize?client_id=2_SGYJn6&scope=all &state=click_bait&response_type=token &redirect_uri={{redirectUri}}'
+      $.ajax({
+            url: queryURL,
+            method: "GET"
+      }).then(function(response){
+            console.log(response)
+            var Image = $('').attr('src,response.')
+      
+      })
 
+}
 
