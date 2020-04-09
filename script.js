@@ -20,6 +20,11 @@ var ssarray = [
       "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"
 ]
 
+var searchArray = [ 
+      "Batman Suit", 
+      
+]
+
 
 var questionnaire = {
     
@@ -30,9 +35,15 @@ var questionnaire = {
             q4: 'Flip Flops or Hiking Boots?',
           },
       options: {
+            q1: ['Batman Suit', 'Superman'],
+            q2: ['Cute Dog', 'Cat'],
+            q3: ['mashed potato', 'Baked Spud'],
+            q4: ['Beach Flip Flops', 'Hiking Boots'],
+          },
+      displayNames: {
             q1: ['Batman', 'Superman'],
             q2: ['Dog', 'Cat'],
-            q3: ['Mashed Potato', 'Baked Spud'],
+            q3: ['Mashed Potato', 'Baked Potato'],
             q4: ['Flip Flops', 'Hiking Boots'],
           },
 
@@ -60,8 +71,8 @@ function startQuiz(){
         
 
             divQuestion.text(questionnaire.questions.q1);
-            divAnswer1.text(questionnaire.options.q1[0])
-            divAnswer2.text(questionnaire.options.q1[1])
+            divAnswer1.text(questionnaire.displayNames.q1[0])
+            divAnswer2.text(questionnaire.displayNames.q1[1])
 
             
             $(".content").append(divQuestion);
@@ -91,8 +102,8 @@ function secondQuestion() {
          
 
             divQuestion.text(questionnaire.questions.q2);
-            divAnswer1.text(questionnaire.options.q2[0])
-            divAnswer2.text(questionnaire.options.q2[1])
+            divAnswer1.text(questionnaire.displayNames.q2[0])
+            divAnswer2.text(questionnaire.displayNames.q2[1])
 
             $(".content").append(divQuestion);
             $(".content").append($("<div>").addClass('columns'));
@@ -124,8 +135,8 @@ function thirdQuestion() {
             
 
             divQuestion.text(questionnaire.questions.q3);
-            divAnswer1.text(questionnaire.options.q3[0])
-            divAnswer2.text(questionnaire.options.q3[1])
+            divAnswer1.text(questionnaire.displayNames.q3[0])
+            divAnswer2.text(questionnaire.displayNames.q3[1])
 
             $(".content").append(divQuestion);
             $(".content").append($("<div>").addClass('columns'));
@@ -158,8 +169,8 @@ function fourthQuestion() {
             var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q4[1]);
             
             divQuestion.text(questionnaire.questions.q4);
-            divAnswer1.text(questionnaire.options.q4[0])
-            divAnswer2.text(questionnaire.options.q4[1])
+            divAnswer1.text(questionnaire.displayNames.q4[0])
+            divAnswer2.text(questionnaire.displayNames.q4[1])
 
             $(".content").append(divQuestion);
             $(".content").append($("<div>").addClass('columns'));
