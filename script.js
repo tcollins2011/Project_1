@@ -16,6 +16,7 @@ var clickBaitDescription = {
       'Color image of Pluto': "If you feel like society is not for you, welcome to Pluto. Although it used to be considered a planet, in 2006 Pluto was reclassified as a dwarf planet. The size of Pluto is actually smaller than Earth's moon, so social distancing would be difficult.",
     
     }
+    console.log(clickBaitDescription);
 var questionnaire = {
     
       questions: {
@@ -127,7 +128,7 @@ function secondQuestion() {
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                 
+                  answerArray.push(true, false);
                   thirdQuestion()
                  
             })
@@ -159,14 +160,14 @@ function thirdQuestion() {
             })
             $(".answerButton1").on("click", function() {
                   $(".content").empty()
-            
+                  answerArray.push(true, false);
                   fourthQuestion()
                   
             })
 
             $(".answerButton2").on("click", function() {
                   $(".content").empty()
-                  answerArray.push(false, false);
+                  answerArray.push();
                   fourthQuestion()
                  
             })
@@ -198,10 +199,7 @@ function fourthQuestion() {
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
                   displayPlanetInfo(planetName)
-                  console.log(answerArray);
-
-                  
-                  
+                   
             })
 
             $(".answerButton2").on("click", function() {
@@ -210,10 +208,9 @@ function fourthQuestion() {
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
                   displayPlanetInfo(planetName) 
-                  console.log(answerArray); 
-                 
-                 
+                   
             })
+
            
 }
 
@@ -230,12 +227,23 @@ function displayPlanetInfo(planetName){
         var planetImage = $('<img>').attr('src', response.collection.items[0].links[0].href).attr('id', 'resultImage')
         var planetDescription =$('<p>').text(response.collection.items[0].data[0].description).attr('id', 'resultNasaText')
         var funnyDescription = $('<p>').text(clickBaitDescription[planetName]).attr('id', 'resultClickBaitText')
+        var startOverButton = $("<btn>").addClass('button').text("Start Over")
+        console.log(planetDescription)
+        console.log(planetImage);
         
         $('.content').append(planetDescription)
         $('.content').append(planetImage)
         $('.content').append(funnyDescription)
+        $('.content').append(startOverButton)
+
+        $(".button").on("click", function() {
+            location.reload()
+
+
+        })
     
 })
 }
-
+      
       console.log(answerArray);
+      
