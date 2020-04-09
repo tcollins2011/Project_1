@@ -33,7 +33,7 @@ var questionnaire = {
           },
 
 }
-     
+// Starts the question function 
 $("#startbtn").on('click', function(){
   $(".content").empty()
 
@@ -41,11 +41,12 @@ $("#startbtn").on('click', function(){
       })
 
 
-
+// Starts the first question function and is referenced by the start over button
 function startQuiz(){     
       firstQuestion();}       
        
-// Renders the first question
+// Renders the first question which is identical to the second and third question
+// This wipes the prebuilt html and starts up the question section
  function firstQuestion() {
 
             
@@ -211,7 +212,7 @@ function fourthQuestion() {
 }
 
 // Wipes the page clear and call the NASA api to put a planet on the page
-// also references the clickBaitDescription array
+// also references the clickBaitDescription array and adds a start over button
 function displayPlanetInfo(planetName){
     var queryURL = 'https://images-api.nasa.gov/search?q=' + planetName
     $.ajax({
@@ -239,8 +240,7 @@ function displayPlanetInfo(planetName){
     
 })
 }
-
-
+// This function searches Pixabay and grabs an image and appends it to a question button
 function getGiphs(searchTarget,appendTarget){
       var queryURL =  'https://pixabay.com/api/?key=15969414-03d75fb92524ff4ee014795c8&q=' + searchTarget
       $.ajax({
