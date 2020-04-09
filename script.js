@@ -175,8 +175,7 @@ function fourthQuestion() {
                   answerArray = _.compact(answerArray)
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
-                  displayPlanetInfo(planetName)
-                   
+                  displayPlanetInfo(planetName)  
             })
 
             $(".answerButton2").on("click", function() {
@@ -185,8 +184,7 @@ function fourthQuestion() {
                   answerArray = _.compact(answerArray)
                   $(".content").empty()
                   planetName = Object.keys(clickBaitDescription)[answerArray.length]
-                  displayPlanetInfo(planetName) 
-                   
+                  displayPlanetInfo(planetName)     
             })
 
            
@@ -216,8 +214,6 @@ function displayPlanetInfo(planetName){
 
         $(".answerButton1").on("click", function() {
             location.reload()
-
-
         })
     
 })
