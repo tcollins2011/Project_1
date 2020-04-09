@@ -49,15 +49,9 @@ function startQuiz(){
  function firstQuestion() {
 
             
-<<<<<<< HEAD
-            var divQuestion = $("<div>").addClass('questionContent');
-            var divAnswer1 = $("<div>").addClass('answerButton1');
-            var divAnswer2 = $("<div>").addClass('answerButton2') ; 
-=======
             var divQuestion = $("<div>");
             var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q1[0]);
             var divAnswer2 = $("<div>").addClass('answerButton2 column').val(questionnaire.options.q1[1]); 
->>>>>>> master
         
 
             divQuestion.text(questionnaire.questions.q1);
