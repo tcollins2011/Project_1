@@ -61,7 +61,7 @@ function startQuiz(){
  function firstQuestion() {
 
             
-            var divQuestion = $("<div>");
+            var divQuestion = $("<div>").addClass('questionContent');
             var divAnswer1 = $("<div>").addClass('answerButton1');
             var divAnswer2 = $("<div>").addClass('answerButton2') ; 
         
