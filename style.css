@@ -99,6 +99,7 @@ html {
     padding: 5px;
     margin: 5px;
 }
+<<<<<<< HEAD
 .resultBanner {
     color: rgb(255, 255, 255);
     font-size: 65px;
@@ -110,3 +111,10 @@ html {
 
 
 
+=======
+
+.qimage {
+    height:350px ;
+    width: 400px;
+}
+>>>>>>> master

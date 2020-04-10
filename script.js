@@ -1,9 +1,9 @@
 
-// Global Variables that we need
+// Global Variables
 var planetName 
 var answerArray = []
  
-// Global Objects that we are using
+// Global Objects that contains all the nasa API info
 var clickBaitDescription = {
       'Mercury shows its true colors': "If you are looking for a good tan then Mercury is the place for you! Mercury is the closest to the sun so make sure you bring some sunscreen. Mercury temperature can reach a 840° Fahrenheit, but don't worry nights are nice and cool with a temperature of -275° Fahrenheit.",
       'Global view of Venus': "If you hate water you are in luck! Venus has no water on its surface due to how hot it gets. If you have a fear of werewolves, have no fear. Venus has no moons!",
@@ -19,8 +19,7 @@ var clickBaitDescription = {
 var ssarray = [
       "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"
 ]
-
-
+// global object that contains all of the questions info
 var questionnaire = {
     
       questions: {
@@ -56,7 +55,9 @@ function startQuiz(){
       firstQuestion();}       
        
 // Renders the first question which is identical to the second and third question
-// This wipes the prebuilt html and starts up the question section
+// This wipes the prebuilt html and creates new div html elements nested in the .content container 
+// then it appends a question to a page and runs the getGiphs function to find relevant images
+// Then it saves the users selection in an array
  function firstQuestion() {
 
             
@@ -157,7 +158,7 @@ function thirdQuestion() {
            
 }
 
-// Renders the final question and calls the display planet info so that we can get the results
+// Renders the final question and calls the display planet info function so that we can get the results
 function fourthQuestion() {
             var divQuestion = $("<div>").addClass('questionContent');
             var divAnswer1 = $("<div>").addClass('answerButton1 column').val(questionnaire.options.q4[0]);
@@ -206,7 +207,7 @@ function displayPlanetInfo(planetName){
         method: "GET"
     }).then(function(response){
         $('.content').empty()
-        var planetImage = $('<img>').attr('src', response.collection.items[0].links[0].href).attr('id', 'resultImage')
+        var planetImage = $('<img>').attr('src', response.collection.items[0].links[0].href).attr('id', 'resultImage').attr('alt',ssarray[answerArray.length])
         var planetDescription =$('<p>').text(response.collection.items[0].data[0].description)
         var funnyDescription = $('<p>').text(clickBaitDescription[planetName]).attr('id', 'resultClickBaitText')
         var startOverButton = $("<btn>").addClass("answerButton1").text("START QUIZ OVER");
@@ -232,7 +233,7 @@ function getGiphs(searchTarget,appendTarget){
             url: queryURL,
             method: "GET"
       }).then(function(response){
-            var questionImage =$('<img>').attr('src',response.hits[0].webformatURL)
+            var questionImage =$('<img>').attr('src',response.hits[0].webformatURL).attr('alt', searchTarget).addClass('qimage')
             appendTarget.append(questionImage)
       })
 
