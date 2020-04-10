@@ -20,11 +20,6 @@ var ssarray = [
       "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"
 ]
 
-var searchArray = [ 
-      "Batman Suit", 
-      
-]
-
 
 var questionnaire = {
     
@@ -178,6 +173,7 @@ function fourthQuestion() {
             $(".columns").append(divAnswer2);
             getGiphs(divAnswer1.val(), $('.answerButton1'))
             getGiphs(divAnswer2.val(), $('.answerButton2'))
+            console.log(answerArray);
            
 
             $(".answerButton1").on("click", function() {
@@ -242,5 +238,8 @@ function getGiphs(searchTarget,appendTarget){
 
 
 }
+
+
+console.log(answerArray);
 
 
