@@ -66,9 +66,10 @@ html {
     color: rgb(2, 204, 255) !important;
     border: 2px solid rgb(3, 184, 255) !important; /* Green */
     font-weight: 400 !important;
-    font-size: 28px !important;
+    font-size: 36px !important;
     padding: 7px;
     margin: 15px;
+    margin-right: 25px;
 
 
 }
@@ -77,9 +78,10 @@ html {
     color: rgb(255, 4, 4) !important;
     border: 2px solid rgb(255, 8, 0) !important; /* Green */
     font-weight: 400 !important;
-    font-size: 28px !important;
+    font-size: 36px !important;
     padding: 7px;
     margin: 15px;
+    margin-left: 25px;
 
 }
 
@@ -87,7 +89,9 @@ html {
     font-size: 42px;
     font-weight: 250px;
     padding: 5px;
+    
     margin: 5px;
+    margin-bottom: 35px;
 }
 #quizDescription {
     font-size: 40px;
@@ -95,3 +99,14 @@ html {
     padding: 5px;
     margin: 5px;
 }
+.resultBanner {
+    color: rgb(255, 255, 255);
+    font-size: 65px;
+    font-weight: 250px;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+
+

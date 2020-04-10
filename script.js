@@ -210,7 +210,7 @@ function displayPlanetInfo(planetName){
         var planetDescription =$('<p>').text(response.collection.items[0].data[0].description)
         var funnyDescription = $('<p>').text(clickBaitDescription[planetName]).attr('id', 'resultClickBaitText')
         var startOverButton = $("<btn>").addClass("answerButton1").text("START QUIZ OVER");
-        var resultPlanetBanner = $("<h1>").addClass("#quizDescription");
+        var resultPlanetBanner = $("<p>").addClass("resultBanner");
         resultPlanetBanner.text("You're from The Planet " + ssarray[answerArray.length] + "!!")
 
       
