@@ -95,3 +95,8 @@ html {
     padding: 5px;
     margin: 5px;
 }
+
+.qimage {
+    height:350px ;
+    width: 400px;
+}
