@@ -232,7 +232,7 @@ function getGiphs(searchTarget,appendTarget){
             url: queryURL,
             method: "GET"
       }).then(function(response){
-            var questionImage =$('<img>').attr('src',response.hits[0].webformatURL).attr('alt', searchTarget)
+            var questionImage =$('<img>').attr('src',response.hits[0].webformatURL).attr('alt', searchTarget).addClass('qimage')
             appendTarget.append(questionImage)
       })
 
